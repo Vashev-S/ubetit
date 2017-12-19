@@ -57,7 +57,7 @@ request(url, function (error, response, body) {
 
 
 
-bot.command('/oldschool', (ctx) => ctx.reply('Hello'))
+bot.command('/nigga', (ctx) => ctx.reply('Hello HUY!'))
 bot.command('/modern', ({ reply }) => reply('Yo'))
 bot.command('/hipster', reply('λ'))
 bot.startPolling()
