@@ -27,13 +27,13 @@ app.listen(1005, () => console.log(`Example app listening on port !@#@!#@!`))
 
 const express = require('express')
 const path = require('path')
-const PORT = 80//process.env.PORT || 5000
+const PORT = process.env.PORT || 5000
 
 express()
     .use(express.static(path.join(__dirname, 'public')))
    // .set('views', path.join(__dirname, 'views'))
    // .set('view engine', 'ejs')
-    .get('/', (req, res) => {
+    .get('/wow', (req, res) => {
     var request = require("request"),
     cheerio = require("cheerio"),
     url = "http://www.wunderground.com/cgi-bin/findweather/getForecast?&query=" + 02888;
