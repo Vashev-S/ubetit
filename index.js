@@ -9,15 +9,15 @@ app.get('/', (req, res) => {
     request(url, function (error, response, body) {
         if (!error) {
             var $ = cheerio.load(body),
-                temperature = $("[data-variable='temperature'] .wx-value").html();
+                temperature = $('.wu-value-to').html();
 
-            console.log("Температура " + temperature + " градусов по Фаренгейту.");
+            console.log("Температура " + temperature + " градусов по Фаренгейту.111");
         } else {
             console.log("Произошла ошибка: " + error);
         }
     });
 })
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(1003, () => console.log('Example app listening on port 1003!'))
 
 
