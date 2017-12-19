@@ -29,7 +29,11 @@ const express = require('express')
 const path = require('path')
 const request = require("request")
 const cheerio = require("cheerio")
-const PORT = process.env.PORT || 1021
+const PORT = process.env.PORT || 5000
+
+const Telegraf = require('telegraf')
+const { reply } = Telegraf
+const bot = new Telegraf('442331568:AAERSNBOgyK3700GpgPYhDrh9pMHhE3N2wY')
 
 express()
     .use(express.static(path.join(__dirname, 'public')))
@@ -50,5 +54,12 @@ request(url, function (error, response, body) {
         console.log("Произошла ошибка: " + error);
     }
 });
+
+
+
+bot.command('/oldschool', (ctx) => ctx.reply('Hello'))
+bot.command('/modern', ({ reply }) => reply('Yo'))
+bot.command('/hipster', reply('λ'))
+bot.startPolling()
 })
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
