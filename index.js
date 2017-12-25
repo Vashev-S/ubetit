@@ -11,46 +11,39 @@ const bot = new Telegraf('442331568:AAERSNBOgyK3700GpgPYhDrh9pMHhE3N2wY')
 express()
     .use(express.static(path.join(__dirname, 'public')))
     .get('/wow', (req, res) => {
-    var url = "http://www.wunderground.com/cgi-bin/findweather/getForecast?&query=" + 02888;
+        var url = "http://www.wunderground.com/cgi-bin/findweather/getForecast?&query=" + 02888;
 
-request(url, function (error, response, body) {
-    if (!error) {
-        var $ = cheerio.load(body),
-            temperature = $('.wu-value-to').html();
+        request(url, function (error, response, body) {
+            if (!error) {
+                var $ = cheerio.load(body),
+                    temperature = $('.wu-value-to').html();
 
-        console.log("Температура " + temperature + " градусов по Фаренгейту.111");
-    } else {
-        console.log("Произошла ошибка: " + error);
-    }
-});
+                console.log("Температура " + temperature + " градусов по Фаренгейту.111");
+            } else {
+                console.log("Произошла ошибка: " + error);
+            }
+        });
 
 
 
-bot.command('/nigga', (ctx) => ctx.reply('Hello HUY!'))
-bot.command('/modern', ({ reply }) => reply('Yo'))
-bot.command('/hipster', reply('λ'))
-bot.startPolling()
-})
+        bot.command('/nigga', (ctx) => ctx.reply('Hello HUY!'))
+        bot.command('/modern', ({ reply }) => reply('Yo'))
+        bot.command('/hipster', reply('λ'))
+        bot.startPolling()
+    })
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 */
-const Telegraf = require('telegraf');
-const express = require('express');
-const expressApp = express();
 
-const API_TOKEN = process.env.API_TOKEN || '442331568:AAERSNBOgyK3700GpgPYhDrh9pMHhE3N2wY';
-const PORT = process.env.PORT || 3000;
-const URL = process.env.URL || 'https://your-heroku-app.herokuapp.com';
+const Telegraf = require('telegraf')
 
-const bot = new Telegraf(API_TOKEN);
-bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
-expressApp.use(bot.webhookCallback(`/bot${API_TOKEN}`));
-/*
- your bot commands and all the other stuff on here ....
-*/
-// and at the end just start server on PORT
-expressApp.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-expressApp.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+const bot = new Telegraf('442331568:AAERSNBOgyK3700GpgPYhDrh9pMHhE3N2wY')
+bot.start((ctx) => {
+    console.log('started:', ctx.from.id)
+return ctx.reply('Welcome!')
+})
+bot.command('help', (ctx) => ctx.reply('Try send a sticker!'))
+bot.hears('hi', (ctx) => ctx.reply('Hey there!'))
+bot.hears(/buy/i, (ctx) => ctx.reply('Buy-buy!'))
+bot.on('sticker', (ctx) => ctx.reply('👍'))
+
+bot.startPolling()
