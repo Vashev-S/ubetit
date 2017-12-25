@@ -11,6 +11,6 @@ module.exports = {
         bot.command('/nigga', (ctx) => ctx.reply('Hello HUY!'))
         bot.command('/modern', ({ reply }) => reply('Yo'))
         bot.command('/hipster', reply('λ'))
-        //bot.startPolling()
+        bot.startPolling()
     }
 };
