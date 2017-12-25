@@ -12,8 +12,7 @@ module.exports = {
         bot.command('/modern', ({ reply }) => reply('Yo'))
         bot.command('/DOIT', ({ reply }) => {
             var datetime = new Date();
-            reply(datetime);
-            setInterval(this.start, 10000);
+            reply('started');
         })
         bot.command('/hipster', reply('λ'))
         bot.startPolling()
