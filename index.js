@@ -32,4 +32,3 @@ express()
         bot.startPolling()
     })
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-*/
