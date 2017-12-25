@@ -1,6 +1,8 @@
 /**
  * Grabber controller
  */
+const request = require("request")
+const cheerio = require("cheerio")
 
 module.exports = {
     getTemperature: function () {
