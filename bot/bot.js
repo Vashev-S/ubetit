@@ -10,6 +10,11 @@ module.exports = {
         console.log('BOT is here');
         bot.command('/nigga', (ctx) => ctx.reply('Hello HUY!'))
         bot.command('/modern', ({ reply }) => reply('Yo'))
+        bot.command('/DOIT', ({ reply }) => {
+            var datetime = new Date();
+            reply(datetime);
+            setInterval(this.start(), 10000);
+        })
         bot.command('/hipster', reply('λ'))
         bot.startPolling()
     }
