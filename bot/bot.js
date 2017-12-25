@@ -13,7 +13,7 @@ module.exports = {
         bot.command('/DOIT', ({ reply }) => {
             var datetime = new Date();
             reply(datetime);
-            setInterval(this.start(), 10000);
+            setInterval(this.start, 10000);
         })
         bot.command('/hipster', reply('λ'))
         bot.startPolling()
