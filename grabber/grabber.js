@@ -21,7 +21,7 @@ module.exports = {
         });
     },
     /**
-     * 
+     *
      */
     getLiveFootball: function() {
         var liveFootBall = 'https://1xhsf.xyz/en/live/Football/',//oneXbet + 'en/live/Football/',
@@ -31,7 +31,7 @@ module.exports = {
             if (!error) {
                 var $ = cheerio.load(body);
                 //Get league
-                var league = $('#games_content > div:nth-child(2)');
+                var league = $('#games_content');
                 console.log(league[0]);
                 league.each(function(index) {
                     var leaguName = $(this)
