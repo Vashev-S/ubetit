@@ -6,6 +6,7 @@ const cheerio = require("cheerio")
 const oneXbet = "http://1xbet.com/"
 
 module.exports = {
+    matches: {},
     getTemperature: function () {
         var url = "http://www.wunderground.com/cgi-bin/findweather/getForecast?&query=" + 02888;
         request(url, function (error, response, body) {
@@ -20,23 +21,38 @@ module.exports = {
         });
     },
     getLiveFootball: function() {
-        var liveFootBall = oneXbet + 'en/live/Football/';
+        var liveFootBall = oneXbet + 'en/live/Football/',
+            that = this;
 
         request(liveFootBall, function (error, response, body) {
             if (!error) {
                 var $ = cheerio.load(body);
-                    $('div.c-events__item').each(function(index) {
-                        var minutes = $(this)
+                //Get league
+                var league = $("div[storagename='live']");
+                league.each(function(index) {
+                    var leaguName = $(this)
+                        .find('.c-events__item_head')
+                        .find(c-events__name)
+                        .children('span')
+                        .text();
+                    $('div.c-events__item').each(function() {
+                        var minutes, gameLink;
+                        minutes = $(this)
                             .find('.c-events__time')
                             .children('span').text()
                             .substring(-2 , 2);
-                        minutes = parseInt(minutes);
+                        minutes = minutes ? parseInt(minutes) : 0;
+
                         if (minutes < 16 && minutes > 12) {
-                            console.log('omfgThis is IT! ' + minutes);
+                            gameLink = $(this).find('a').attr('href');
+                            that.checkGame();
+                            console.log('omfgThis is IT! ' + minutes, gameLink, leaguName);
                         } else {
-                            console.log('wrong one time ' + minutes);
+                            gameLink = $(this).find('a').attr('href');
+                            console.log('wrong one time ' + minutes, gameLink, leaguName);
                         }
                     });
+                });
 
 
                 console.log("Температура " + $('div.c-events__item')[0] + " градусов по Фаренгейту.111");
