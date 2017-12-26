@@ -30,7 +30,6 @@ module.exports = {
                             .find('.c-events__time')
                             .children('span').text()
                             .substring(-2 , 2);
-                        var matchName = ;
                         minutes = parseInt(minutes);
                         if (minutes < 16 && minutes > 12) {
                             console.log('omfgThis is IT! ' + minutes);
