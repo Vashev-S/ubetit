@@ -84,7 +84,8 @@ module.exports = {
                 secondCount = $(status).find('.ds-stats-table__count')[1];
                 gameName = $('#page_title > span').text();
 
-                console.log(firstCount + ' ' + description + ' ' + secondCount + '    ' + gameName);
+                console.log(gameName);
+                console.log(firstCount + ' ' + description + ' ' + secondCount);
             } else {
                 console.log("Произошла ошибка: " + error);
             }
