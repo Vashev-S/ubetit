@@ -37,13 +37,10 @@ module.exports = {
                     });
 
 
-                console.log("Температура " + temperature + " градусов по Фаренгейту.111");
+                console.log("Температура " + $('div.c-events__item')[0] + " градусов по Фаренгейту.111");
             } else {
                 console.log("Произошла ошибка: " + error);
             }
         });
-    },
-    getLeagues: function(allMatches) {
-        allMatches
     }
 };
