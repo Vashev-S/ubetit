@@ -33,7 +33,7 @@ module.exports = {
                     league;
                 //Get league
                 league = $($('#games_content').find('div')[1]);
-                console.log(league[0]);
+                //console.log(league[0]);
                 league.each(function(index) {
                     var leaguName = $(this)
                         .find('.c-events__item_head')
@@ -51,11 +51,11 @@ module.exports = {
                         if (minutes < 16 && minutes > 12) {
                             gameLink = $(this).find('a').attr('href');
                             that.checkGame();
-                            console.log('omfgThis is IT! ' + minutes, gameLink, leaguName);
+                            //console.log('omfgThis is IT! ' + minutes, gameLink, leaguName);
                         } else {
                             gameLink = $(this).find('a').attr('href');
                             that.checkGame(gameLink);
-                            console.log('wrong one time ' + minutes, gameLink, leaguName);
+                            //console.log('wrong one time ' + minutes, gameLink, leaguName);
                         }
                     });
                 });
