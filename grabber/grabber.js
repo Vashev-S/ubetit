@@ -37,7 +37,7 @@ module.exports = {
                 league.each(function(index) {
                     var leaguName = $(this)
                         .find('.c-events__item_head')
-                        .find(c-events__name)
+                        .find('c-events__name')
                         .children('span')
                         .text();
                     $('div.c-events__item').each(function() {
