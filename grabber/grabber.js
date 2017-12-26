@@ -82,7 +82,8 @@ module.exports = {
                 var $ = cheerio.load(body),
                     description, gameName;
 
-                description = $($('.db-stats-table__group')[5]).find('div').text();
+                description = $('.db-stats-table__group')[5];
+                description = $(description).find('.db-stats-table__description').text();
                 gameName = $('#page_title > span').text();
 
                 console.log(gameName);
