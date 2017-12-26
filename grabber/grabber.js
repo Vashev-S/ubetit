@@ -1,13 +1,11 @@
 /**
  * Grabber controller
  */
-var cheerio = require("cheerio")
+const cheerio = require("cheerio")
 
 const request = require("request")
 const oneXbet = "http://1xbet.com/"
-const cheerioAdv = require('cheerio-advanced-selectors')
 
-cheerio = cheerioAdv.wrap(cheerio)
 
 module.exports = {
     matches: {},
