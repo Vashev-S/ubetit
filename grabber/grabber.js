@@ -82,11 +82,11 @@ module.exports = {
                 var $ = cheerio.load(body),
                     description, gameName;
 
-                description = $('.db-stats-table__group')[5];
-                description = $('#games_content > div.SSR > div > div.mainTablo > div.double_tabloR.quadBoard.soccer.notVideo.smallBoard.twoSt.notZone.tblMinD > div.tablo_dual_board > div.db__stats > div.db-stats__bottom > div > div:nth-child(24) > div.db-stats-table__description').text();
+                description = $('.db-stats__bottom-table').find('.db-stats-table__description')[5];
+                //description = $(description).find('.db-stats-table__description').text();
                 gameName = $('#page_title > span').text();
 
-                console.log(gameName + 'tuc');
+                console.log(gameName);
                 console.log(description);
             } else {
                 console.log("Произошла ошибка: " + error);
