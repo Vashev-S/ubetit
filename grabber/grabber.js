@@ -29,9 +29,10 @@ module.exports = {
 
         request(liveFootBall, function (error, response, body) {
             if (!error) {
-                var $ = cheerio.load(body);
+                var $ = cheerio.load(body),
+                    league;
                 //Get league
-                var league = $('#games_content');
+                league = $($('#games_content').find('div')[1]);
                 console.log(league[0]);
                 league.each(function(index) {
                     var leaguName = $(this)
