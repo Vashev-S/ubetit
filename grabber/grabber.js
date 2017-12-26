@@ -1,9 +1,13 @@
 /**
  * Grabber controller
  */
+var cheerio = require("cheerio")
+
 const request = require("request")
-const cheerio = require("cheerio")
 const oneXbet = "http://1xbet.com/"
+const cheerioAdv = require('cheerio-advanced-selectors')
+
+cheerio = cheerioAdv.wrap(cheerio)
 
 module.exports = {
     matches: {},
@@ -82,7 +86,7 @@ module.exports = {
                 gameName = $('#page_title > span').text();
 
                 console.log(gameName);
-                console.log($($($('.db-stats-table__group')[5]).find('div')[0]).text());
+                console.log(description);
             } else {
                 console.log("Произошла ошибка: " + error);
             }
