@@ -28,7 +28,7 @@ module.exports = {
             if (!error) {
                 var $ = cheerio.load(body);
                 //Get league
-                var league = $("div[storagename='live']");
+                var league = $('#games_content > div:nth-child(2)');
                 console.log(league[0]);
                 league.each(function(index) {
                     var leaguName = $(this)
