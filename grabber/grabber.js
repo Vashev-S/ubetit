@@ -81,7 +81,10 @@ module.exports = {
                     description, gameName;
 
                 //description = $('div.db-stats__bottom-table')[0];
-                description = $('div.sports_widget').find('div.game_content_line.on_main ').find('#games_content')[0];
+                description = $('div.sports_widget')
+                    .find('div.game_content_line.on_main ')
+                    .find('#games_content')
+                    .find('.db__stats')[0];
                 gameName = $('#page_title > span').text();
 
                 console.log(gameName);
