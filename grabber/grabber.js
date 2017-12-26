@@ -29,6 +29,7 @@ module.exports = {
                 var $ = cheerio.load(body);
                 //Get league
                 var league = $("div[storagename='live']");
+                console.log(league[0]);
                 league.each(function(index) {
                     var leaguName = $(this)
                         .find('.c-events__item_head')
