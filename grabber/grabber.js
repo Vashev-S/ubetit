@@ -33,6 +33,8 @@ module.exports = {
                         minutes = parseInt(minutes);
                         if (minutes < 16 && minutes > 12) {
                             console.log('omfgThis is IT! ' + minutes);
+                        } else {
+                            console.log('wrong one time ' + minutes);
                         }
                     });
 
