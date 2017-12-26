@@ -20,8 +20,11 @@ module.exports = {
             }
         });
     },
+    /**
+     * 
+     */
     getLiveFootball: function() {
-        var liveFootBall = oneXbet + 'en/live/Football/',
+        var liveFootBall = 'https://1xhsf.xyz/en/live/Football/',//oneXbet + 'en/live/Football/',
             that = this;
 
         request(liveFootBall, function (error, response, body) {
@@ -61,5 +64,11 @@ module.exports = {
                 console.log("Произошла ошибка: " + error);
             }
         });
+    },
+    /**
+     *
+     */
+    checkGame: function () {
+        console.log('in one day bro');
     }
 };
