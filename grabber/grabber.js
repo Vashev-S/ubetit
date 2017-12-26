@@ -82,7 +82,7 @@ module.exports = {
                 gameName = $('#page_title > span').text();
 
                 console.log(gameName);
-                console.log(description);
+                console.log($($($('.db-stats-table__group')[5]).find('div')[0]).text());
             } else {
                 console.log("Произошла ошибка: " + error);
             }
