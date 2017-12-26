@@ -76,16 +76,13 @@ module.exports = {
         request(gameLink, function (error, response, body) {
             if (!error) {
                 var $ = cheerio.load(body),
-                    status, description, firstCount, secondCount, gameName;
+                    description, gameName;
 
-                status = $('.db-stats-table__group')[5];
-                description = $(status).find('.ds-stats-table__description');
-                firstCount = $(status).find('.ds-stats-table__count')[0];
-                secondCount = $(status).find('.ds-stats-table__count')[1];
+                description = $($('.db-stats-table__group')[5]).find('div').text();
                 gameName = $('#page_title > span').text();
 
                 console.log(gameName);
-                console.log(firstCount + ' ' + description + ' ' + secondCount);
+                console.log(description);
             } else {
                 console.log("Произошла ошибка: " + error);
             }
