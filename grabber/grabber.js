@@ -24,7 +24,7 @@ module.exports = {
      *
      */
     getLiveFootball: function() {
-        var liveFootBall = 'https://1xhsf.xyz/en/live/Football/',//oneXbet + 'en/live/Football/',
+        var liveFootBall = oneXbet + 'en/live/Football/',
             that = this;
 
         request(liveFootBall, function (error, response, body) {
@@ -54,6 +54,7 @@ module.exports = {
                             console.log('omfgThis is IT! ' + minutes, gameLink, leaguName);
                         } else {
                             gameLink = $(this).find('a').attr('href');
+                            that.checkGame(gameLink);
                             console.log('wrong one time ' + minutes, gameLink, leaguName);
                         }
                     });
@@ -69,7 +70,24 @@ module.exports = {
     /**
      *
      */
-    checkGame: function () {
-        console.log('in one day bro');
+    checkGame: function (link) {
+        var gameLink = oneXbet + link;
+
+        request(gameLink, function (error, response, body) {
+            if (!error) {
+                var $ = cheerio.load(body),
+                    status, description, firstCount, secondCount, gameName;
+
+                status = $('.db-stats-table__group')[5];
+                description = $(status).find('.ds-stats-table__description');
+                firstCount = $(status).find('.ds-stats-table__count')[0];
+                secondCount = $(status).find('.ds-stats-table__count')[1];
+                gameName = $('#page_title > span').text();
+
+                console.log(firstCount + ' ' + description + ' ' + secondCount + '    ' + gameName);
+            } else {
+                console.log("Произошла ошибка: " + error);
+            }
+        });
     }
 };
