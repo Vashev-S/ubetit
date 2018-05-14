@@ -7,20 +7,17 @@ module.exports = {
             const page = await instance.createPage();
             await page.on('onResourceRequested', function(requestData) {
                 //console.log('sas = ', requestData.getElementsByClassName('jc-sp-between')[0]);
-                //console.info('Requesting', requestData.url);
+                console.info('Requesting', requestData.url);
             });
 
-            const status = await page.open('https://stackoverflow.com/', function() {
-                console.log("Status: " + status);
-                if(status === "success") {
-                    page.evaluate(function() {
-                        document.getElementsByClassName('jc-sp-between')[0];
-                        console.log(document.getElementsByClassName('jc-sp-between')[0]);
+            const status = await page.open('https://stackoverflow.com/');
 
-                    });
-                }
-                phantom.exit();
+            page.evaluate(function() {
+                return document.getElementsByClassName('jc-sp-between')[0].innerHTML;
+            }).then(function(html){
+                console.log(html);
             });
+
             const content = await page.property('content');
             //console.log(content);
 
