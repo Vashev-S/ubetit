@@ -1,23 +1,17 @@
 const phantom = require('phantom');
 
 module.exports = {
-    getData: function () {
-        const instance = await
-        phantom.create();
-        const page = await
-        instance.createPage();
-        await
-        page.on('onResourceRequested', function (requestData) {
+    getData: (async function() {
+        const instance = await phantom.create();
+        const page = await instance.createPage();
+        await page.on('onResourceRequested', function(requestData) {
             console.info('Requesting', requestData.url);
         });
 
-        const status = await
-        page.open('https://stackoverflow.com/');
-        const content = await
-        page.property('content');
-        console.log('Content = ', content);
+        const status = await page.open('https://stackoverflow.com/');
+        const content = await page.property('content');
+        console.log(content);
 
-        await
-        instance.exit();
-    }
+        await instance.exit();
+    });
 }
