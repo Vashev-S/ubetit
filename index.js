@@ -4,11 +4,14 @@ const PORT = process.env.PORT || 5000
 
 const bot = require('./bot/bot');
 const grabber = require('./grabber/grabber');
+const phantomGrabber = require('./grabber/phantomGrab');
 
 express()
     .use(express.static(path.join(__dirname, 'public')))
     .get('/wow', (req, res) => {
-        grabber.getLiveFootball();
+        phantomGrabber.getData();
+        //grabber.getLiveFootball();
+
 //bot.start();
 //grabber.getTemperature();
     })
