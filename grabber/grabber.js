@@ -85,7 +85,7 @@ module.exports = {
                     .find('div.game_content_line.on_main ')
                     .find('#games_content')
                     .find('.main_game')[0];
-                
+
                 gameName = $('#page_title > span').text();
 
                 console.log(gameName);
