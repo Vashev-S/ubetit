@@ -22,7 +22,7 @@ module.exports = {
                 phantom.exit();
             });
             const content = await page.property('content');
-            console.log(content);
+            //console.log(content);
 
             await instance.exit();
         })();
