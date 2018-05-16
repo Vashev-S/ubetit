@@ -75,9 +75,11 @@ module.exports = {
                 }).then(function(html) {
                     console.log('WOWOWOOW = ', html);
 
+                }).catch(function(error) {
+                    console.log('ERROR = ', error);
                 });
             });
-
+            console.log('BEFORE EXIT!');
            await instance.exit();
         })();
     },
