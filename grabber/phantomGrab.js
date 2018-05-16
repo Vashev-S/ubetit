@@ -55,7 +55,6 @@ console.log('LETSROLL');
         //Get league
         league = $($('#games_content').find('div')[1]);
         //console.log(league[0]);
-console.log('TEST ===', league);
         league.each(function(index) {
             var leaguName = $(this)
                 .find('.c-events__item_head')
@@ -92,6 +91,7 @@ console.log('TEST ===', league);
      */
     openGame: function(link) {
         var gameLink = oneXbet + link;
+        gameLink = 'https://1xstavka.ru/live/Football/211739-Japan-Nabisco-Cup/160036529-Shonan-Bellmare-V-Varen-Nagasaki/';
         this.getPage(gameLink, this.checkGame.bind(this));
     },
 
