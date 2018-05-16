@@ -77,6 +77,7 @@ console.log('TEST ===', league);
                     gameLink = $(this).find('a').attr('href');
                     that.openGame(gameLink);
                     console.log('wrong one time ' + minutes, gameLink, leaguName);
+                    return;
                 }
             });
         });
@@ -99,7 +100,7 @@ console.log('TEST ===', league);
     checkGame: function(body) {
         var $ = cheerio.load(body),
             description, gameName;
-
+console.log('checkGame');
         //description = $('div.db-stats__bottom-table')[0];
         description = $('div.sports_widget')
             .find('div.game_content_line.on_main ')
