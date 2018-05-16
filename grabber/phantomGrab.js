@@ -113,6 +113,7 @@ console.log('checkGame');
         gameName = $('#page_title > span').text();
 
         console.log(gameName);
+        console.log('BODY = ', body);
         console.log(description);
     }
 }
