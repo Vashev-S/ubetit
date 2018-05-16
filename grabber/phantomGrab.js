@@ -10,7 +10,7 @@ module.exports = {
      * Initialize
      */
     init: function() {
-        this.getPage('http://1xbet.com/en/live/Football/', this.getLiveFootball);
+        this.getPage('http://1xbet.com/en/live/Football/', this.getLiveFootball.bind(this));
     },
 
     /**
@@ -85,7 +85,7 @@ console.log('TEST ===', league);
     /**
      *
      */
-    checkGame: function (link) {
+    checkGame: function(link) {
         var gameLink = oneXbet + link;
 
         request(gameLink, function (error, response, body) {
