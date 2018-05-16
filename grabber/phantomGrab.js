@@ -71,7 +71,10 @@ module.exports = {
             }, function() {
                 console.log("The sign-in dialog should be visible now.");
                 page.evaluate(function() {
-                    console.log('WOWOWOOW = ', $('div.db__stats > div.db-stats__bottom > div > div:nth-child(1) > div.db-stats-table__description').text());
+                    return $('div.db__stats > div.db-stats__bottom > div > div:nth-child(1) > div.db-stats-table__description').text();
+                }).then(function(html) {
+                    console.log('WOWOWOOW = ', html);
+
                 });
             });
 
