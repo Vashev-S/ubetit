@@ -1,8 +1,8 @@
 const phantom = require('phantom');
 
-const cheerio = require("cheerio")
+const cheerio = require('cheerio');
 
-const oneXbet = "http://1xbet.com/"
+const oneXbet = 'http://1xbet.com/';
 
 module.exports = {
 
@@ -87,7 +87,8 @@ console.log('TEST ===', league);
      * @param link
      */
     openGame: function(link) {
-        var gameLink = oneXbet + link;
+        console.log('SAS = ' + oneXbet);
+        var gameLink = 'http://1xbet.com/' + link;
         this.getPage(gameLink, this.checkGame.bind(this));
     },
 
