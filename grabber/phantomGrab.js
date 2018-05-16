@@ -61,7 +61,7 @@ console.log('TEST ===', league);
                 .find('c-events__name')
                 .children('span')
                 .text();
-            $('div.c-events__item').each(function() {
+           /* $('div.c-events__item').each(function() {
                 var minutes, gameLink;
                 minutes = $(this)
                     .find('.c-events__time')
@@ -77,9 +77,11 @@ console.log('TEST ===', league);
                     gameLink = $(this).find('a').attr('href');
                     that.openGame(gameLink);
                     console.log('wrong one time ' + minutes, gameLink, leaguName);
-                    return;
                 }
-            });
+            });*/
+            var game = $('div.c-events__item')[0];
+            var gameLink = $(game).find('a').attr('href');
+            that.openGame(gameLink);
         });
     },
 
