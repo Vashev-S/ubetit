@@ -31,12 +31,10 @@ module.exports = {
             const status = await page.open(url);
 
             page.evaluate(function() {
+                setTimeout(function() {}, 10000);
                 return document.getElementsByTagName('body')[0].innerHTML;
             }).then(function(html) {
-                setTimeout(function() {
-                    callBack(html);
-                }, 5000);
-
+                callBack(html);
             });
 
             const content = await page.property('content');
