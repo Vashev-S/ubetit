@@ -66,7 +66,7 @@ module.exports = {
             that.waitFor(function() {
                 // Check in the page if a specific element is now visible
                 return page.evaluate(function() {
-                    return $('div.db-stats__bottom-table').is(":visible");
+                    return $('div.db-stats__bottom-table').text().length > 0;
                 });
             }, function() {
                 console.log("The sign-in dialog should be visible now.");
