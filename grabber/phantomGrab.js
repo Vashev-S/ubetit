@@ -73,7 +73,8 @@ module.exports = {
                 page.evaluate(function() {
                     return document.getElementsByTagName('body')[0].innerHTML;
                 }).then(function(html) {
-                    callBack(html);
+                    console.log('html = ', html);
+                    //callBack(html);
                 });
             });
 
