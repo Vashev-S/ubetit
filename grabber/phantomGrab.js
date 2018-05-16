@@ -10,7 +10,8 @@ module.exports = {
      * Initialize
      */
     init: function() {
-        this.getPage('http://1xbet.com/en/live/Football/', this.getLiveFootball.bind(this));
+        //this.getPage('http://1xbet.com/en/live/Football/', this.getLiveFootball.bind(this));
+        this.openGame();
     },
 
     /**
@@ -30,17 +31,23 @@ module.exports = {
 
             const status = await page.open(url);
 
-            page.evaluate(function() {
-                setTimeout(function() {}, 10000);
-                return document.getElementsByTagName('body')[0].innerHTML;
-            }).then(function(html) {
-                callBack(html);
-            });
 
             const content = await page.property('content');
             //console.log(content);
-
-            await instance.exit();
+            waitFor(function() {
+                // Check in the page if a specific element is now visible
+                return page.evaluate(function() {
+                    return $('div.db-stats__bottom-table').is(":visible");
+                });
+            }, function() {
+                console.log("The sign-in dialog should be visible now.");
+                page.evaluate(function() {
+                    return document.getElementsByTagName('body')[0].innerHTML;
+                }).then(function(html) {
+                    callBack(html);
+                });
+            });
+           await instance.exit();
         })();
     },
 
