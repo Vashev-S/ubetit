@@ -91,8 +91,7 @@ console.log('TEST ===', league);
      * @param link
      */
     openGame: function(link) {
-        console.log('SAS = ' + oneXbet);
-        var gameLink = 'http://1xbet.com/' + link;
+        var gameLink = oneXbet + link;
         this.getPage(gameLink, this.checkGame.bind(this));
     },
 
@@ -114,9 +113,8 @@ description = $('div.db__stats > div.db-stats__bottom > div > div:nth-child(1) >
         gameName = $('#page_title > span').text();
 
         console.log(gameName);
-        console.log('BODY = ', $('div.sports_widget').innerHTML);
-        console.log('BODY1 = ', $('div.sports_widget').find('div.game_content_line.on_main ').innerHTML);
-        console.log('BODY2 = ', $('div.sports_widget').find('div.game_content_line.on_main ').find('#games_content').innerHTML);
-        console.log(description);
+        console.log('description = ', description);
+        console.log('table = ', $('div.db-stats__bottom-table')[0]);
+
     }
 }
