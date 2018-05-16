@@ -105,10 +105,11 @@ console.log('TEST ===', league);
             description, gameName;
 console.log('checkGame');
         //description = $('div.db-stats__bottom-table')[0];
-        description = $('div.sports_widget')
+        /*description = $('div.sports_widget')
             .find('div.game_content_line.on_main ')
             .find('#games_content')
-            .find('.main_game')[0];
+            .find('.main_game')[0];*/
+description = $('div.db__stats > div.db-stats__bottom > div > div:nth-child(1) > div.db-stats-table__description').text();
 
         gameName = $('#page_title > span').text();
 
