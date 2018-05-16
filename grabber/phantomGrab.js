@@ -68,17 +68,12 @@ module.exports = {
                 return page.evaluate(function() {
                     return $('div.db-stats__bottom-table').is(":visible");
                 });
-            }, function(html) {
-                console.log("The sign-in dialog should be visible now.", html);
-                page.evaluate(function() {
-                    return document.getElementsByTagName('body')[0].innerHTML;
-                }).then(function(html) {
-                    console.log('html = ', html);
-                    //callBack(html);
-                });
+            }, function() {
+                console.log("The sign-in dialog should be visible now.");
+                console.log('WOWOWOOW = ', $('div.db__stats > div.db-stats__bottom > div > div:nth-child(1) > div.db-stats-table__description').text());
             });
 
-           //await instance.exit();
+           await instance.exit();
         })();
     },
 
