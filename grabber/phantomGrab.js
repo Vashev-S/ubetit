@@ -74,12 +74,12 @@ module.exports = {
                     return $('div.db__stats > div.db-stats__bottom > div > div:nth-child(1) > div.db-stats-table__description').text();
                 }).then(function(html) {
                     console.log('WOWOWOOW = ', html);
-                    await instance.exit();
                 }).catch(function(error) {
                     console.log('ERROR = ', error);
                 });
             });
             console.log('BEFORE EXIT!');
+            //await instance.exit();
         })();
     },
 
