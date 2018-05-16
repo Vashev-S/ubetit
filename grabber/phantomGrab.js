@@ -70,7 +70,9 @@ module.exports = {
                 });
             }, function() {
                 console.log("The sign-in dialog should be visible now.");
-                console.log('WOWOWOOW = ', $('div.db__stats > div.db-stats__bottom > div > div:nth-child(1) > div.db-stats-table__description').text());
+                page.evaluate(function() {
+                    console.log('WOWOWOOW = ', $('div.db__stats > div.db-stats__bottom > div > div:nth-child(1) > div.db-stats-table__description').text());
+                });
             });
 
            await instance.exit();
