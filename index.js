@@ -9,7 +9,7 @@ const phantomGrabber = require('./grabber/phantomGrab');
 express()
     .use(express.static(path.join(__dirname, 'public')))
     .get('/wow', (req, res) => {
-        phantomGrabber.getData();
+        phantomGrabber.init();
         //grabber.getLiveFootball();
 
 //bot.start();

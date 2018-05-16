@@ -5,22 +5,35 @@ const cheerio = require("cheerio")
 const oneXbet = "http://1xbet.com/"
 
 module.exports = {
-    getData: function() {
+
+    /**
+     * Initialize
+     */
+    init: function() {
+        this.getPage('http://1xbet.com/en/live/Football/', this.getLiveFootball);
+    },
+
+    /**
+     * Get page by URL
+     * @param {String} url - url of the getting page
+     * @param {Function} callBack - function which will be call after getting page
+      */
+    getPage: function(url, callBack) {
         var that = this;
         (async function() {
             const instance = await phantom.create();
             const page = await instance.createPage();
             await page.on('onResourceRequested', function(requestData) {
                 //console.log('sas = ', requestData.getElementsByClassName('jc-sp-between')[0]);
-                console.info('Requesting', requestData.url);
+                //console.info('Requesting', requestData.url);
             });
 
-            const status = await page.open('http://1xbet.com/en/live/Football/');
+            const status = await page.open(url);
 
             page.evaluate(function() {
                 return document.getElementsByTagName('body')[0].innerHTML;
-            }).then(function(html){
-                that.getLiveFootball(html);
+            }).then(function(html) {
+                callBack(html);
             });
 
             const content = await page.property('content');
@@ -58,12 +71,12 @@ console.log('TEST ===', league);
 
                 if (minutes < 16 && minutes > 12) {
                     gameLink = $(this).find('a').attr('href');
-                   // that.checkGame();
-                    //console.log('omfgThis is IT! ' + minutes, gameLink, leaguName);
+                    that.checkGame(gameLink);
+                    console.log('omfgThis is IT! ' + minutes, gameLink, leaguName);
                 } else {
                     gameLink = $(this).find('a').attr('href');
-                   // that.checkGame(gameLink);
-                    //console.log('wrong one time ' + minutes, gameLink, leaguName);
+                    that.checkGame(gameLink);
+                    console.log('wrong one time ' + minutes, gameLink, leaguName);
                 }
             });
         });
