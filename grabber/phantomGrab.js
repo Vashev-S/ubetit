@@ -68,8 +68,8 @@ module.exports = {
                 return page.evaluate(function() {
                     return $('div.db-stats__bottom-table').is(":visible");
                 });
-            }, function() {
-                console.log("The sign-in dialog should be visible now.");
+            }, function(html) {
+                console.log("The sign-in dialog should be visible now.", html);
             });
 
            //await instance.exit();
