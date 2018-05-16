@@ -71,11 +71,11 @@ console.log('TEST ===', league);
 
                 if (minutes < 16 && minutes > 12) {
                     gameLink = $(this).find('a').attr('href');
-                    that.checkGame(gameLink);
+                    that.openGame(gameLink);
                     console.log('omfgThis is IT! ' + minutes, gameLink, leaguName);
                 } else {
                     gameLink = $(this).find('a').attr('href');
-                    that.checkGame(gameLink);
+                    that.openGame(gameLink);
                     console.log('wrong one time ' + minutes, gameLink, leaguName);
                 }
             });
@@ -84,28 +84,30 @@ console.log('TEST ===', league);
 
     /**
      *
+     * @param link
      */
-    checkGame: function(link) {
+    openGame: function(link) {
         var gameLink = oneXbet + link;
+        this.getPage(gameLink, this.checkGame.bind(this));
+    },
 
-        request(gameLink, function (error, response, body) {
-            if (!error) {
-                var $ = cheerio.load(body),
-                    description, gameName;
+    /**
+     *
+     * @param body
+     */
+    checkGame: function(body) {
+        var $ = cheerio.load(body),
+            description, gameName;
 
-                //description = $('div.db-stats__bottom-table')[0];
-                description = $('div.sports_widget')
-                    .find('div.game_content_line.on_main ')
-                    .find('#games_content')
-                    .find('.main_game')[0];
+        //description = $('div.db-stats__bottom-table')[0];
+        description = $('div.sports_widget')
+            .find('div.game_content_line.on_main ')
+            .find('#games_content')
+            .find('.main_game')[0];
 
-                gameName = $('#page_title > span').text();
+        gameName = $('#page_title > span').text();
 
-                console.log(gameName);
-                console.log(description);
-            } else {
-                console.log("Произошла ошибка: " + error);
-            }
-        });
+        console.log(gameName);
+        console.log(description);
     }
 }
