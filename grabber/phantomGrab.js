@@ -113,10 +113,9 @@ console.log('checkGame');
         gameName = $('#page_title > span').text();
 
         console.log(gameName);
-        console.log('BODY = ', $('div.sports_widget')[0]);
-        console.log('BODY = ', $('div.sports_widget').find('div.game_content_line.on_main ')[0]);
-        console.log('BODY = ', $('div.sports_widget').find('div.game_content_line.on_main ').find('#games_content')[0]);
-        console.log('BODY = ', $('div.sports_widget'));
+        console.log('BODY = ', $('div.sports_widget').innerHTML);
+        console.log('BODY1 = ', $('div.sports_widget').find('div.game_content_line.on_main ').innerHTML);
+        console.log('BODY2 = ', $('div.sports_widget').find('div.game_content_line.on_main ').find('#games_content').innerHTML);
         console.log(description);
     }
 }
