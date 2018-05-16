@@ -54,7 +54,13 @@ module.exports = {
 
             const status = await page.open(url);
 
-
+            /*
+             page.evaluate(function() {
+                    return document.getElementsByTagName('body')[0].innerHTML;
+                }).then(function(html) {
+                    callBack(html);
+                });
+             */
             const content = await page.property('content');
             //console.log(content);
             that.waitFor(function() {
@@ -64,11 +70,7 @@ module.exports = {
                 });
             }, function() {
                 console.log("The sign-in dialog should be visible now.");
-                page.evaluate(function() {
-                    return document.getElementsByTagName('body')[0].innerHTML;
-                }).then(function(html) {
-                    callBack(html);
-                });
+                phantom.exit();
             });
 
            await instance.exit();
