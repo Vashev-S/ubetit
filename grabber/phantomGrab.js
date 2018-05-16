@@ -70,6 +70,11 @@ module.exports = {
                 });
             }, function(html) {
                 console.log("The sign-in dialog should be visible now.", html);
+                page.evaluate(function() {
+                    return document.getElementsByTagName('body')[0].innerHTML;
+                }).then(function(html) {
+                    callBack(html);
+                });
             });
 
            //await instance.exit();
