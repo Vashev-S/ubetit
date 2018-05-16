@@ -33,7 +33,10 @@ module.exports = {
             page.evaluate(function() {
                 return document.getElementsByTagName('body')[0].innerHTML;
             }).then(function(html) {
-                callBack(html);
+                setTimeout(function() {
+                    callBack(html);
+                }, 5000);
+
             });
 
             const content = await page.property('content');
