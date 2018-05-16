@@ -66,7 +66,7 @@ module.exports = {
             that.waitFor(function() {
                 // Check in the page if a specific element is now visible
                 return page.evaluate(function() {
-                    return $('div.db-stats__bottom-table').text().length > 0;
+                    return ($('div.db__stats > div.db-stats__bottom > div > div:nth-child(1) > div.db-stats-table__description').text() == 'Угловые');
                 });
             }, function() {
                 console.log("The sign-in dialog should be visible now.");
