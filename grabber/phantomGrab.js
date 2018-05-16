@@ -70,10 +70,9 @@ module.exports = {
                 });
             }, function() {
                 console.log("The sign-in dialog should be visible now.");
-                phantom.exit();
             });
 
-           await instance.exit();
+           //await instance.exit();
         })();
     },
 
