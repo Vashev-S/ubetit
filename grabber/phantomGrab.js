@@ -129,9 +129,30 @@ console.log('LETSROLL');
      * @param link
      */
     openGame: function(link) {
+        /**
         var gameLink = oneXbet + link;
-        gameLink = 'https://1xstavka.ru/live/Football/211739-Japan-Nabisco-Cup/160036529-Shonan-Bellmare-V-Varen-Nagasaki/';
+        gameLink = 'https://1xstavka.ru/live/Football/1323331-Tajikistan-Cup/164779539-Istiklol-CSKA-Pomir-Dushanbe/';
         this.getPage(gameLink, this.checkGame.bind(this));
+        **/
+console.log(1111);
+        phantom.create(function ([ph]) {
+            console.log(2);
+            ph.createPage(function (page) {
+                console.log(3);
+                var url = "https://1xstavka.ru/live/Football/1323331-Tajikistan-Cup/164779539-Istiklol-CSKA-Pomir-Dushanbe/";
+                console.log(4);
+                page.open(url, function() {
+                    console.log(5);
+                  page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", function() {
+                    page.evaluate(function() {
+                        console.log($('div.db__stats > div.db-stats__bottom > div > div:nth-child(1) > div.db-stats-table__description').text());
+                    }, function(){
+                      ph.exit()
+                    });
+                  });
+                });
+            });
+        });
     },
 
     /**
