@@ -40,8 +40,8 @@ phantom.create()
 _page.evaluate(function() {
 console.log('2.2');
 var body = document.body;
-console.log(body);
-console.log(document.getElementsByClassName('db-stats-table__description')[0]);
+console.error(body);
+console.error(document.getElementsByClassName('db-stats-table__description')[0]);
 });
     return _page.includeJs("127.0.0.1:5001/jquery.min.js");
   })
