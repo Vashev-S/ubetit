@@ -37,13 +37,13 @@ phantom.create()
 	console.log('2');
 	//console.log('page = ', page);
 	console.log('_page = ');
-_page.evaluate(function() {
+/*_page.evaluate(function() {
 console.log('2.2');
 var body = document.body;
 console.error(body);
 console.error(document.getElementsByClassName('db-stats-table__description')[0]);
-});
-    return _page.includeJs("127.0.0.1:5001/jquery.min.js");
+});*/
+    return _page.includeJs("https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js");
   })
   .then(function() {
 	console.log('2.1');
